@@ -1,0 +1,82 @@
+<div>
+  <h1 class="text-4xl uppercase font-bold mb-20 text-center">Videos</h1>
+</div>
+
+<div class="flex flex-wrap justify-center gap-x-20 gap-y-20 py-20 bg-black">
+  <div
+    *ngFor="let video of videos; let i = index"
+    class="relative group w-[260px] h-[540px] transition-all duration-700 ease-in-out"
+    [ngClass]="{
+      '-rotate-6': i === 0,
+      'rotate-0 mt-16': i === 1,
+      'rotate-6': i === 2,
+      'opacity-100 translate-y-0': isVisible[i],
+      'opacity-0 translate-y-12': !isVisible[i],
+    }"
+    #videoRef
+    (mouseenter)="onMouseEnter(i)"
+    (mouseleave)="onMouseLeave(i)"
+  >
+    <!-- ================================================= -->
+    <!-- PHONE BODY -->
+    <!-- ================================================= -->
+
+    <div
+      class="relative w-full h-full p-[7px] rounded-[34px] bg-gradient-to-br from-[#252525] via-[#090909] to-[#1c1c1c] border border-white/15 shadow-[0_18px_50px_rgba(0,0,0,0.75)] transition-all duration-500 group-hover:rotate-2 group-hover:scale-[1.04]"
+    >
+      <!-- Outer Highlight -->
+      <div
+        class="absolute inset-0 rounded-[34px] pointer-events-none border border-white/5"
+      ></div>
+
+      <!-- ================================================= -->
+      <!-- SIDE BUTTONS -->
+      <!-- ================================================= -->
+
+      <div
+        class="absolute -left-[4px] top-[105px] w-[3px] h-[42px] rounded-l-md bg-[#2b2b2b] shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+      ></div>
+
+      <div
+        class="absolute -right-[4px] top-[125px] w-[3px] h-[58px] rounded-r-md bg-[#2b2b2b] shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+      ></div>
+
+      <!-- ================================================= -->
+      <!-- SCREEN -->
+      <!-- ================================================= -->
+
+      <div
+        class="relative w-full h-full rounded-[27px] overflow-hidden bg-black border border-white/10"
+      >
+        <!-- ================================================= -->
+        <!-- YOUTUBE SHORT -->
+        <!-- ================================================= -->
+
+        <div #videoPlayer class="absolute inset-0 w-full h-full"></div>
+
+        <!-- ================================================= -->
+        <!-- NON-CLICKABLE VIDEO OVERLAY -->
+        <!-- ================================================= -->
+
+        <div
+          class="absolute inset-0 z-10 pointer-events-auto"
+          aria-hidden="true"
+        ></div>
+
+        <!-- ================================================= -->
+        <!-- MUTE BUTTON -->
+        <!-- ================================================= -->
+
+        <button
+          type="button"
+          class="absolute bottom-4 right-4 z-30 w-[38px] h-[38px] flex items-center justify-center rounded-full bg-black/65 backdrop-blur-md border border-white/15 text-white text-[15px] shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:bg-black/85 hover:border-white/30 hover:scale-105 active:scale-95 transition-all duration-200"
+          (click)="toggleMute(i); $event.stopPropagation()"
+        >
+          <span *ngIf="isMuted[i]" class="opacity-90"> 🔇 </span>
+
+          <span *ngIf="!isMuted[i]" class="opacity-90"> 🔊 </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

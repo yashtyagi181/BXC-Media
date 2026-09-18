@@ -1,1 +1,118 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design system using CSS variables (HSL format) */
+@layer base {
+  :root {
+    --background: 220 27% 4%;
+    --foreground: 210 40% 98%;
+    --card: 220 23% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 23% 7%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 14% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 14% 14%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 220 14% 14%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 14% 14%;
+    --input: 220 14% 14%;
+    --ring: 210 100% 60%;
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(210 100% 60%),
+      hsl(195 100% 70%)
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(220 23% 7%),
+      hsl(220 27% 12%)
+    );
+    --accent-glow: 195 100% 70%;
+    --step-inactive: 220 14% 25%;
+    --step-active: 210 100% 60%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 27% 4%;
+    --foreground: 210 40% 98%;
+    --card: 220 23% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 23% 7%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 14% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 14% 14%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 220 14% 14%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 14% 14%;
+    --input: 220 14% 14%;
+    --ring: 210 100% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-foreground;
+    overflow-x: hidden;
+  }
+
+  .phone-frame:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* === Global Scroll Animations === */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease-out;
+  transition-delay: var(--delay, 0s);
+}
+
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional text utility for consistent muted tone */
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}

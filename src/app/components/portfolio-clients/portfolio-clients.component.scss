@@ -1,0 +1,36 @@
+/* Main container */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Moving track */
+.marquee-track {
+  display: flex;
+  width: max-content;
+
+  animation: marquee-scroll 45s linear infinite;
+}
+
+/* Pause on hover (optional) */
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Infinite scroll animation */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: 30s;
+  }
+}

@@ -1,0 +1,122 @@
+.enter-from-left {
+  animation: enterFromLeft 0.8s ease-out forwards;
+}
+
+.enter-from-right {
+  animation: enterFromRight 0.8s ease-out forwards;
+}
+
+.enter-from-bottom {
+  animation: enterFromBottom 0.8s ease-out forwards;
+}
+
+.exit-to-left {
+  animation: exitToLeft 0.8s ease-in forwards;
+}
+
+.exit-to-right {
+  animation: exitToRight 0.8s ease-in forwards;
+}
+
+.exit-to-bottom {
+  animation: exitToBottom 0.8s ease-in forwards;
+}
+
+.enter-from-top {
+  animation: enterFromTop 0.8s ease-out forwards;
+}
+
+.exit-to-top {
+  animation: exitToTop 0.8s ease-in forwards;
+}
+
+@keyframes enterFromLeft {
+  0% {
+    transform: translateX(-100vw) rotateZ(-180deg) rotateY(-180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) rotateZ(0) rotateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes enterFromRight {
+  0% {
+    transform: translateX(100vw) rotateZ(180deg) rotateY(180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) rotateZ(0) rotateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes enterFromBottom {
+  0% {
+    transform: translateY(100vh) rotateX(180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes enterFromTop {
+  0% {
+    transform: translateY(-100vh) rotateX(-180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+  }
+}
+
+.tilt-left {
+  transform: rotateY(-8deg) rotateX(2deg);
+}
+
+.tilt-right {
+  transform: rotateY(8deg) rotateX(2deg);
+}
+
+.tilt-center {
+  transform: rotateY(0deg) rotateX(3deg);
+}
+
+@keyframes exitToLeft {
+  0% {
+    transform: translateX(0) rotateZ(0) rotateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100vw) rotateZ(-180deg) rotateY(-180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes exitToRight {
+  0% {
+    transform: translateX(0) rotateZ(0) rotateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) rotateZ(180deg) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes exitToBottom {
+  0% {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotateX(180deg);
+    opacity: 0;
+  }
+}
+
+

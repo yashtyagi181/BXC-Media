@@ -1,0 +1,66 @@
+<section class="max-w-4xl mx-auto px-6 py-16" *ngIf="caseStudy">
+  
+  <h1 class="text-4xl font-bold py-8 mb-6">{{ caseStudy.title }}</h1>
+  <p class="text-lg text-muted-foreground mb-8">{{ caseStudy.industry }}</p>
+
+  <!-- Thumbnail -->
+  <img 
+    [src]="caseStudy.thumbnail" 
+    class="w-full h-64 object-cover rounded-xl mb-10"
+  />
+
+  <!-- Brief Overview -->
+  <div class="mb-10">
+    <h2 class="text-2xl font-semibold mb-3">Overview</h2>
+    <p class="text-muted-foreground">{{ caseStudy.overview }}</p>
+  </div>
+
+  <!-- Challenges -->
+  <div class="mb-10">
+    <h2 class="text-2xl font-semibold mb-3">Challenges</h2>
+    <ul class="list-disc ml-6 text-muted-foreground">
+      <li *ngFor="let item of caseStudy.challenges">{{ item }}</li>
+    </ul>
+  </div>
+
+  <!-- Strategy -->
+  <div class="mb-10">
+    <h2 class="text-2xl font-semibold mb-3">Strategy</h2>
+    <ul class="list-disc ml-6 text-muted-foreground">
+      <li *ngFor="let item of caseStudy.strategy">{{ item }}</li>
+    </ul>
+  </div>
+
+  <!-- Execution -->
+  <div class="mb-10">
+    <h2 class="text-2xl font-semibold mb-3">Execution</h2>
+    <ul class="list-disc ml-6 text-muted-foreground">
+      <li *ngFor="let item of caseStudy.execution">{{ item }}</li>
+    </ul>
+  </div>
+
+  <!-- Results -->
+  <div class="mb-10">
+    <h2 class="text-2xl font-semibold mb-3">Results</h2>
+    <ul class="list-disc ml-6 text-muted-foreground">
+      <li *ngFor="let item of caseStudy.results">{{ item }}</li>
+    </ul>
+  </div>
+
+  <!-- Testimonial -->
+  <div class="mb-12" *ngIf="caseStudy.testimonial">
+    <h2 class="text-2xl font-semibold mb-3">Client Testimonial</h2>
+    <blockquote class="italic text-muted-foreground bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+      "{{ caseStudy.testimonial }}"
+    </blockquote>
+  </div>
+
+  <!-- CTA -->
+  <div class="mt-12">
+    <a 
+      routerLink="/contact" 
+      class="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition">
+      Start Your Transformation
+    </a>
+  </div>
+</section>

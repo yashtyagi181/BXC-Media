@@ -1,0 +1,149 @@
+<!-- ===========================================================
+HERO
+=========================================================== -->
+
+<section class="case-hero">
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <span class="eyebrow"> SELECTED WORK </span>
+
+    <h1 class="hero-title">
+      Every View.<br />
+      Every Lead.<br />
+
+      <span> Every Story. </span>
+    </h1>
+
+    <p class="hero-description">
+      We help founders, coaches and personal brands dominate their industry
+      through strategic content systems that generate authority, trust and
+      inbound leads.
+    </p>
+  </div>
+</section>
+
+<!-- ===========================================================
+FEATURED CASE STUDIES
+=========================================================== -->
+
+<section class="case-wrapper">
+  <section
+    *ngFor="let cs of caseStudies; let i = index"
+    class="case-study"
+    [class.reverse]="i % 2 !== 0"
+    (click)="openCaseStudy(cs.slug)"
+  >
+    <!-- IMAGE -->
+
+    <div class="case-image-wrapper">
+      <img class="case-image" [src]="cs.thumbnail" [alt]="cs.title" />
+
+      <div class="image-overlay"></div>
+
+      <div class="floating-label">Featured Story</div>
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="case-content">
+      <span class="case-number"> 0{{ i + 1 }} </span>
+
+      <h2>
+        {{ cs.title }}
+      </h2>
+
+      <p>
+        {{ cs.shortDescription }}
+      </p>
+
+      <!-- METRICS -->
+
+      <div class="metrics">
+        <div class="metric">
+          <h3>8M+</h3>
+
+          <span>Views</span>
+        </div>
+
+        <div class="metric">
+          <h3>120+</h3>
+
+          <span>Videos</span>
+        </div>
+
+        <div class="metric">
+          <h3>4X</h3>
+
+          <span>Growth</span>
+        </div>
+      </div>
+
+      <button class="explore-btn">
+        View Full Case Study
+
+        <span> → </span>
+      </button>
+    </div>
+  </section>
+</section>
+
+<!-- ===========================================================
+PROCESS
+=========================================================== -->
+
+<section class="process-section">
+  <span class="eyebrow"> OUR APPROACH </span>
+
+  <h2>Every success story follows the same system.</h2>
+
+  <div class="process-grid">
+    <div class="process-card">
+      <span>01</span>
+
+      <h3>Strategy</h3>
+
+      <p>Positioning, messaging and audience clarity.</p>
+    </div>
+
+    <div class="process-card">
+      <span>02</span>
+
+      <h3>Production</h3>
+
+      <p>High-performing content engineered for trust.</p>
+    </div>
+
+    <div class="process-card">
+      <span>03</span>
+
+      <h3>Distribution</h3>
+
+      <p>Publishing across every platform consistently.</p>
+    </div>
+
+    <div class="process-card">
+      <span>04</span>
+
+      <h3>Scale</h3>
+
+      <p>Turn attention into inbound leads.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================================================
+FINAL CTA
+=========================================================== -->
+
+<section class="cta-section">
+  <div class="cta-box">
+    <span> READY TO BE NEXT? </span>
+
+    <h2>Let's build your authority.</h2>
+
+    <p>Your competitors are posting content. We'll help you build influence.</p>
+
+    <button>Book Strategy Call</button>
+  </div>
+</section>

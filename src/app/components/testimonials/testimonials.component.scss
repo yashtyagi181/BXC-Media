@@ -1,0 +1,555 @@
+.video-deck-wrapper {
+  padding: clamp(40px, 8vw, 100px) 0;
+  background: black;
+  overflow: hidden;
+}
+
+/* =========================================================
+   DECK
+   ========================================================= */
+
+.deck-container {
+  position: relative;
+  width: min(90vw, 900px);
+  height: clamp(320px, 70vw, 520px);
+  margin: auto;
+  perspective: 1500px;
+  overflow: visible;
+}
+
+/* =========================================================
+   VIDEO CARD
+   ========================================================= */
+
+.video-card {
+  position: absolute;
+
+  width: min(75vw, 620px);
+  height: clamp(260px, 60vw, 460px);
+
+  aspect-ratio: 5 / 4;
+
+  top: 50%;
+  left: 50%;
+
+  transform-origin: center center;
+
+  border-radius: 20px;
+  overflow: hidden;
+
+  background: black;
+
+  border: 2px solid rgba(0, 170, 255, 0.8);
+
+  box-shadow: 0 0 35px rgba(0, 170, 255, 0.6);
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 0.4s ease,
+    filter 0.4s ease;
+
+  opacity: 0;
+
+  will-change: transform, opacity;
+
+  backface-visibility: hidden;
+
+  isolation: isolate;
+}
+
+/* =========================================================
+   YOUTUBE PLAYER
+   ========================================================= */
+
+/*
+ * The YouTube API creates an iframe inside this container.
+ *
+ * Previously the iframe was keeping its own default
+ * dimensions, which caused the black/empty space below
+ * the actual video.
+ */
+
+.youtube-testimonial-player {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: black;
+
+  z-index: 1;
+}
+
+/*
+ * Force the YouTube iframe to completely fill
+ * the testimonial card.
+ */
+
+.youtube-testimonial-player iframe {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  border: 0;
+
+  display: block;
+}
+
+/*
+ * Sometimes YouTube creates an additional wrapper
+ * around the iframe. Make sure that also fills the card.
+ */
+
+.youtube-testimonial-player > div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* =========================================================
+   ACTIVE CARD
+   ========================================================= */
+
+.video-card.active {
+  transform: translate(-50%, -50%) scale(1) translateZ(0);
+
+  opacity: 1;
+
+  z-index: 10;
+
+  pointer-events: auto;
+}
+
+/* =========================================================
+   RIGHT STACK
+   ========================================================= */
+
+.video-card.right {
+  transform: translate(calc(-50% + 12vw), -50%) scale(0.9) translateZ(-120px);
+
+  opacity: 0.5;
+
+  filter: blur(2px);
+
+  z-index: 5;
+}
+
+/* Further right */
+
+.video-card.right:nth-child(n + 3) {
+  transform: translate(calc(-50% + 20vw), -50%) scale(0.8) translateZ(-200px);
+
+  opacity: 0.25;
+}
+
+/* =========================================================
+   LEFT HIDDEN
+   ========================================================= */
+
+.video-card.left {
+  transform: translate(calc(-50% - 20vw), -50%) scale(0.7);
+
+  opacity: 0;
+}
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.controls {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 20;
+}
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.progress-bar {
+  position: absolute;
+
+  /*
+   * Keep the progress bar above the buttons.
+   */
+  bottom: 50px;
+
+  left: 14px;
+  right: 14px;
+
+  height: 5px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  border-radius: 5px;
+
+  pointer-events: auto;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  z-index: 25;
+}
+
+.progress-fill {
+  height: 100%;
+
+  background: linear-gradient(90deg, #00aaff, #00ffff, #00aaff);
+
+  box-shadow: 0 0 10px #00ffff;
+
+  width: 0%;
+
+  transition: width 0.08s linear;
+
+  border-radius: inherit;
+}
+
+/* =========================================================
+   PLAY / MUTE BUTTON ROW
+   ========================================================= */
+
+.control-row {
+  position: absolute;
+
+  /*
+   * Buttons are clearly BELOW the progress bar.
+   */
+  bottom: 7px;
+
+  left: 12px;
+  right: 12px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  pointer-events: auto;
+
+  z-index: 30;
+}
+
+/* =========================================================
+   CONTROL BUTTONS
+   ========================================================= */
+
+.control-row button {
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+  min-height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  border: 1px solid #00aaff;
+
+  color: #00aaff;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+
+  backdrop-filter: blur(6px);
+
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.control-row button:hover {
+  background: #00aaff;
+
+  color: black;
+
+  box-shadow: 0 0 12px #00aaff;
+
+  transform: scale(1.05);
+}
+
+.control-row button:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================
+   ICON BUTTON
+   ========================================================= */
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  border: 1px solid #00aaff;
+
+  color: #00ffff;
+
+  font-size: 16px;
+
+  backdrop-filter: blur(6px);
+
+  -webkit-backdrop-filter: blur(6px);
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(0, 170, 255, 0.2);
+
+  box-shadow: 0 0 12px #00ffff;
+
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.deck-nav {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 40px;
+
+  margin-top: 50px;
+}
+
+.button {
+  display: block;
+
+  position: relative;
+
+  width: 56px;
+  height: 56px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  outline: none;
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  border: 0;
+}
+
+.button::before,
+.button::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  inset: 7px;
+}
+
+.button::before {
+  border: 4px solid rgba(0, 170, 255, 0.6);
+
+  transition:
+    opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.button::after {
+  border: 4px solid #00aaff;
+
+  transform: scale(1.3);
+
+  transition:
+    opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  opacity: 0;
+}
+
+.button:hover::before {
+  opacity: 0;
+
+  transform: scale(0.7);
+}
+
+.button:hover::after {
+  opacity: 1;
+
+  transform: scale(1);
+}
+
+.button-box {
+  display: flex;
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+}
+
+.button-elem {
+  display: block;
+
+  width: 20px;
+  height: 20px;
+
+  margin: 17px 18px 0 18px;
+
+  transform: rotate(180deg);
+
+  fill: #00aaff;
+}
+
+.button:hover .button-box {
+  transition: 0.4s;
+
+  transform: translateX(-56px);
+}
+
+.button.next {
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   SMOOTH INFINITE SCROLL
+   ========================================================= */
+
+.scroll-wrapper {
+  overflow: hidden;
+
+  width: 100%;
+
+  position: relative;
+}
+
+.scroll-track {
+  display: flex;
+
+  width: max-content;
+
+  animation: scrollLoop linear infinite;
+
+  animation-duration: var(--scroll-speed, 40s);
+}
+
+.scroll-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .deck-container {
+    perspective: 1000px;
+  }
+
+  .video-card {
+    border-radius: 14px;
+  }
+
+  /*
+   * Slightly smaller controls on mobile.
+   */
+
+  .control-row button,
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+
+    min-width: 32px;
+    min-height: 32px;
+
+    font-size: 12px;
+  }
+
+  /*
+   * Keep progress above the buttons.
+   */
+
+  .progress-bar {
+    bottom: 43px;
+
+    left: 10px;
+    right: 10px;
+
+    height: 4px;
+  }
+
+  .control-row {
+    bottom: 6px;
+
+    left: 10px;
+    right: 10px;
+  }
+}
+
+/* =========================================================
+   IPAD / TABLET
+   ========================================================= */
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .deck-container {
+    width: 85vw;
+
+    height: 45vw;
+  }
+
+  .video-card {
+    width: 65vw;
+
+    height: 50vw;
+  }
+}

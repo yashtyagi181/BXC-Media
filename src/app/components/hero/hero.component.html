@@ -1,0 +1,89 @@
+<section
+#heroSection
+class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+>
+  <div #threeContainer class="absolute inset-0 z-0"></div>
+  <!-- Background Image -->
+  <div 
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+    style="background-image: url('assets/hero-bg.png')"
+  ></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-black/90 via-black/70 to-black/90"></div>
+
+  <!-- Floating Gradient Orbs -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent-glow/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+
+  <!-- Content -->
+  <div 
+    #heroContent
+    class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    <h1 #heroTitle class="text-5xl md:text-7xl font-bold leading-tight">
+      <span class="text-white">Helping Business Owners </span>
+      <span class="bg-gradient-to-r from-primary via-accent-glow to-primary bg-clip-text text-transparent">
+        Scale Their Brand 
+      </span>
+      <br />
+      <span class="bg-gradient-to-r from-accent-glow via-primary to-accent-glow bg-clip-text text-transparent">
+        Through Video Marketing 
+      </span>
+    </h1>
+
+    <p #heroSubtitle class="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto mt-6 leading-relaxed">
+      Increase Your Sales and Double Your Reach Through our DFY Content Strategy.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div #heroButtons class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+      <button 
+        class="bg-gradient-to-r from-primary to-accent-glow hover:from-primary/90 hover:to-accent-glow/90 text-white font-semibold px-8 py-4 rounded-full transition-transform duration-300 hover:scale-105 shadow-lg shadow-primary/25"
+        (click)="bookCall()">
+        Start Your Podcast Journey
+      </button>
+      <button
+        routerLink="/case-studies"
+        class="border-2 border-primary/30 text-white hover:bg-primary/10 font-semibold px-8 py-4 rounded-full transition-transform duration-300 hover:scale-105">
+        View Case Studies
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div #heroStats class="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+      <div class="text-center">
+        <div class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">
+          7000+
+        </div>
+        <div class="text-sm text-muted-foreground mt-1">Videos Created</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">
+          100M+
+        </div>
+        <div class="text-sm text-muted-foreground mt-1">Views Generated</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">
+          70+
+        </div>
+        <div class="text-sm text-muted-foreground mt-1">Business Served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  #sectionTwo
+  class="relative py-28 px-6 text-center text-white overflow-hidden"
+>
+  <div class="max-w-4xl mx-auto">
+    <h2 class="section-two-title text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">
+      You're Great at What You Do — But Your Market Doesn't Know It Yet
+    </h2>
+
+    <p class="section-two-text text-lg md:text-xl text-muted-foreground leading-relaxed">
+      The truth? Clients buy from authorities — not advertisers.
+      If your content isn’t positioning you as the go-to expert,
+      you're leaving premium clients on the table.
+    </p>
+  </div>
+</section>

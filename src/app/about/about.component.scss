@@ -1,0 +1,8 @@
+:host {
+  perspective: 1000px;
+}
+
+.perspective-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}

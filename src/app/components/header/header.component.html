@@ -1,0 +1,61 @@
+<header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a routerLink="/home" class="flex items-center">
+        <img src="assets/photos/logo.png" 
+              alt=" " 
+              class="w-12 h-12 object-contain"
+        />
+        <span class="text-2xl font-bold text-foreground">
+          Bxc<span class="bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">Media</span>
+        </span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a
+          *ngFor="let item of navItems"
+          [routerLink]="item.link"
+          routerLinkActive="text-primary"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
+        >
+          {{ item.label }}
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-glow transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <button
+          class="bg-gradient-to-r from-primary to-accent-glow hover:from-primary/90 hover:to-accent-glow/90 text-white font-medium px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105" (click)="bookCall()">BOOK A CALL
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-foreground" (click)="toggleMenu()">
+        <lucide-icon *ngIf="!isMenuOpen" name="menu" class="w-6 h-6"></lucide-icon>
+        <lucide-icon *ngIf="isMenuOpen" name="x" class="w-6 h-6"></lucide-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+    <div *ngIf="isMenuOpen" class="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50">
+    <div class="px-6 py-4 space-y-4">
+      <a
+        *ngFor="let item of navItems"
+        [routerLink]="item.link"
+        routerLinkActive="text-primary"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+        (click)="closeMenu()"
+      >
+        {{ item.label }}
+      </a>
+    </div>
+  </div>
+</header>
